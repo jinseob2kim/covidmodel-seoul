@@ -1,0 +1,110 @@
+---
+title: "Covid 수리모델링"
+author: 김진섭; [`r anicon::faa('github', animate='float', rtext='jinseob2kim')`](https://github.com/jinseob2kim)
+institute: "차라투(주)"
+date: "2021-02-08"
+output:
+  xaringan::moon_reader:
+    css: ["css/footer-header.css", "default"]
+    lib_dir: libs
+    nature:
+      beforeInit: "js/macros.js"
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "4:3" 
+subtitle: "서울시 확진자데이터 이용"
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(echo = FALSE, fig.align = "center")
+library(knitr);library(DT);library(shiny)
+```
+
+
+layout: true
+
+<div class="my-footer"><span><a href="https://www.zarathu.com">Zarathu Co.,Ltd</a>   
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+<a href="https://github.com/jinseob2kim">김진섭</a></span></div> 
+
+
+---
+
+# Executive summary
+
+.large[
+- 대표적인 감염병 모형은 **SIR/SEIR** 이고, 초기값과 parameter(예: 접촉률)가 주어진 미분방정식으로 표현.
+
+
+- 확진자수 등 **실제 데이터를 활용**, parameter 들을 추정.
+
+
+- SEIR 에 서울시 확진자수를 적용, **시간에 따라 변화하는 접촉률**을 계산함.
+
+
+- Parameter와 그 파생지표의 범위를 제한하고 신뢰구간을 계산하기 위해, **베이지안통계** 이용 예정. 
+]
+
+---
+class: center, middle
+
+# 감염병 수리모형 소개
+
+---
+# SIR model 
+
+
+<center> <img src="https://www.lewuathe.com/assets/img/posts/2020-03-11-covid-19-dynamics-with-sir-model/sir.png" width="80%"></center>
+<center> <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/29728a7d4bebe8197dca7d873d81b9dce954522e" width="20%"></center>
+
+.large[
+$N = S + I + R$ 은 보통 일정하다고 가정.
+]
+
+---
+# $\beta$, $\gamma$
+
+.large[
+$\beta$: 유효접촉률 (단위: $\frac{1}{Person \times Day}$)
+* 비감염자 1명당 매일 $\beta I$ 명의 감염자와 접촉.
+
+$$\frac{1}{\beta}: \text{평균접촉일수}$$
+
+$\gamma$: 회복률 (단위: $\frac{1}{Person \times Day}$)
+
+$$\frac{1}{\gamma}: \text{평균회복일수}$$
+
+감염재생산수 $R_0 = \frac{\beta}{\gamma}$
+]
+
+
+---
+
+# Executive summary
+
+.large[
+- 대표적인 감염병 모형은 **SIR/SEIR** 이고, 초기값과 parameter(예: 접촉률)가 주어진 미분방정식으로 표현.
+
+
+- 확진자수 등 **실제 데이터를 활용**, parameter 들을 추정.
+
+
+- SEIR 에 서울시 확진자수를 적용, **시간에 따라 변화하는 접촉률**을 계산함.
+
+
+- Parameter와 그 파생지표의 범위를 제한하고 신뢰구간을 계산하기 위해, **베이지안통계** 이용 예정. 
+]
+
+---
+
+class: center, middle
+
+# END
