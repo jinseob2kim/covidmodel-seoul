@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="author" content="김진섭; <span>&lt;i class="fab  fa-github faa-float animated "&gt;&lt;/i&gt;jinseob2kim</span>" />
     <meta name="date" content="2021-02-08" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/font-awesome-animation/font-awesome-animation-emi.css" rel="stylesheet" />
     <script src="libs/fontawesome/js/fontawesome-all.min.js"></script>
@@ -71,16 +72,54 @@ class: center, middle
 # `\(\beta\)`, `\(\gamma\)`
 
 .large[
-`\(\beta\)`: 유효접촉률 (단위: `\(\frac{1}{Person \times Day}\)`)
-* 비감염자 1명당 매일 `\(\beta I\)` 명의 감염자와 접촉.
+`\(\beta\)`: 감염률 
+* 시간(일) 당 접촉수 `\(\times\)` 접촉당 감염확률
 
-`$$\frac{1}{\beta}: \text{평균접촉일수}$$`
 
-`\(\gamma\)`: 회복률 (단위: `\(\frac{1}{Person \times Day}\)`)
 
-`$$\frac{1}{\gamma}: \text{평균회복일수}$$`
+`\(\gamma\)`: 회복률 
+
+`$$\frac{1}{\gamma}: \text{평균회복시간(일)}$$`
 
 감염재생산수 `\(R_0 = \frac{\beta}{\gamma}\)`
+- `\(&gt; 1\)` 유행, `\(&lt; 1\)` 소멸
+]
+
+---
+# [SEIR model](https://covid19.uclaml.org/model.html)
+
+.large[
+노출(Exposed) 후 **잠복기**를 거쳐 감염. `\(\frac{1}{\theta} = \text{잠복기간(일)}\)`
+
+&lt;center&gt; &lt;img src="https://covid19.uclaml.org/figures/seir_illu.png" width="80%"&gt;&lt;/center&gt;
+
+$$
+`\begin{align}
+      \frac{d S}{d t}&amp;= -\frac{\beta I S}{N}\\
+      \frac{d E}{d t}&amp;= \frac{\beta I S}{N} -\theta E\\
+      \frac{d I}{d t}&amp;= \theta E - \gamma I\\
+      \frac{d R}{d t}&amp;=\gamma I
+\end{align}`
+$$
+]
+
+---
+# Simulation
+.large[
+https://benbennben.github.io/covid-19/
+
+- 미분방정식(사실은 점화식) 은 초기값($S, I, R$), parameter($\beta$, `\(\gamma\)`)가 정해지면 단순계산으로 구할 수 있다.
+
+- 그럼 끝?
+
+]
+
+--
+
+.large[
+- Parameter 를 어떻게 결정하나. 알아서 결정 vs **실제 데이터로 fitting**
+
+- 서울시분석: 회복기간($\frac{1}{\gamma}$) 6.8일, 잠재기($\frac{1}{\theta}$) 3.5 일 가정, `\(\beta\)` 는 추정.
 ]
 
 
