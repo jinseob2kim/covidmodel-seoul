@@ -280,6 +280,11 @@ output <- ode(y = c(S = 9953009 - 1 - 1, E = 1, I = 1, R = 0), times = times, fu
 - 일부 데이터만 이용시(예: 11월 이후) 초기조건 정하기 어려움.
 ]
 
+---
+# ShinyApps
+
+[![](shiny.png)](http://app.zarathu.com/konkukmath/covid19/)
+
 
 
 
