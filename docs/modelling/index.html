@@ -42,13 +42,13 @@ layout: true
 # Executive summary
 
 .large[
-- 대표적인 감염병 모형은 **SIR/SEIR** 이고, 초기값과 parameter(예: 접촉률)가 주어진 미분방정식으로 표현.
+- 대표적인 감염병 모형은 **SIR/SEIR** 이고, 초기값과 parameter(예: 감염률)가 주어진 미분방정식으로 표현.
 
 
 - 확진자수 등 **실제 데이터를 활용**, parameter 들을 추정.
 
 
-- SEIR 에 서울시 확진자수를 적용, **시간에 따라 변화하는 접촉률**을 계산함.
+- SEIR 에 서울시 확진자수를 적용, **시간에 따라 변화하는 감염률**을 계산함.
 
 
 - Parameter와 그 파생지표의 범위를 제한하고 신뢰구간을 계산하기 위해, **베이지안통계** 이용 예정. 
@@ -273,9 +273,9 @@ output &lt;- ode(y = c(S = 9953009 - 1 - 1, E = 1, I = 1, R = 0), times = times,
 ---
 # 보완점
 .large[
-- `\(\beta\)`, 예측값의 신뢰구간 구하기가 어려움. 
+- `\(\beta\)`, 예측값의 신뢰구간 구하기가 어려움. 0보다 크다는 제한 두기 위해 `\(\exp\)` 이용. 
 
--  여러 지표들의 신뢰구간을 자유자재로 구하기 위해 MCMC 등을 이용한 베이지안통계 필요. R에서 [stan](https://mc-stan.org/users/documentation/case-studies/boarding_school_case_study.html) 이용가능.
+-  여러 지표들의 제한범위를 설정하고, 신뢰구간을 자유자재로 구하기 위해 MCMC 등을 이용한 베이지안통계 필요. R에서 [stan](https://mc-stan.org/users/documentation/case-studies/boarding_school_case_study.html) 이용가능.
 
 - 일부 데이터만 이용시(예: 11월 이후) 초기조건 정하기 어려움.
 ]
@@ -293,13 +293,13 @@ output &lt;- ode(y = c(S = 9953009 - 1 - 1, E = 1, I = 1, R = 0), times = times,
 # Executive summary
 
 .large[
-- 대표적인 감염병 모형은 **SIR/SEIR** 이고, 초기값과 parameter(예: 접촉률)가 주어진 미분방정식으로 표현.
+- 대표적인 감염병 모형은 **SIR/SEIR** 이고, 초기값과 parameter(예: 감염률)가 주어진 미분방정식으로 표현.
 
 
 - 확진자수 등 **실제 데이터를 활용**, parameter 들을 추정.
 
 
-- SEIR 에 서울시 확진자수를 적용, **시간에 따라 변화하는 접촉률**을 계산함.
+- SEIR 에 서울시 확진자수를 적용, **시간에 따라 변화하는 김염률**을 계산함.
 
 
 - Parameter와 그 파생지표의 범위를 제한하고 신뢰구간을 계산하기 위해, **베이지안통계** 이용 예정. 
