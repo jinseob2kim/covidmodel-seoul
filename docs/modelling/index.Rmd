@@ -109,7 +109,7 @@ $$
 .large[
 https://benbennben.github.io/covid-19/
 
-- 미분방정식(사실은 점화식) 은 초기값($S, I, R$), parameter($\beta$, $\gamma$)가 정해지면 단순계산으로 구할 수 있다.
+- 미분방정식(사실은 점화식) 은 초기값( $S, I, R$ ), parameter( $\beta$, $\gamma$ )가 정해지면 단순계산으로 구할 수 있다.
 
 - 그럼 끝?
 
@@ -120,7 +120,7 @@ https://benbennben.github.io/covid-19/
 .large[
 - Parameter 를 어떻게 결정하나. 알아서 결정 vs **실제 데이터로 fitting**
 
-- 서울시분석: 회복기간($\frac{1}{\gamma}$) 6.8일, 잠재기($\frac{1}{\theta}$) 3.5 일 가정, $\beta$ 는 추정.
+- 서울시분석: 회복기간( $\frac{1}{\gamma}$ ) 6.8일, 잠재기( $\frac{1}{\theta}$ ) 3.5 일 가정, $\beta$ 는 추정.
 ]
 
 
@@ -137,7 +137,7 @@ https://www.nrc.re.kr/board.es?mid=a10301000000&bid=0008&list_no=171543&act=view
 1. 서울시 확진자 수, 인구수 정보 
 - http://data.seoul.go.kr/dataList/OA-20279/S/1/datasetView.do
 
-2. SEIR 모델: $\beta$ 만 추정($\gamma$, $\theta$ 고정)
+2. SEIR 모델: $\beta$ 만 추정( $\gamma$, $\theta$ 고정)
 
 
 3. $\beta$ 시간에 따라 변한다고 가정. 
